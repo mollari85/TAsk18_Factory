@@ -1,0 +1,55 @@
+﻿<Window x:Class="TAsk18_Factory.View.AnimalView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TAsk18_Factory.View"
+        mc:Ignorable="d"
+        Title="AnimalView" Height="450" Width="800" Loaded="OnLoaded">
+    <Window.Resources>
+        <Style x:Key="Button">
+            <Setter Property="ItemsControl.Margin" Value="0,10,10,10"></Setter>
+            <Setter Property="ItemsControl.Width" Value="60"></Setter>
+            <Setter Property="ItemsControl.Height" Value="40"></Setter>
+        </Style>
+        <Style x:Key="Text">
+            <Setter Property="ItemsControl.Margin" Value="10"></Setter>
+        </Style>
+    </Window.Resources>
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="6*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Style="{StaticResource Text}" Grid.Column="0" Grid.Row="0" Text="Type"></TextBlock>
+        <ComboBox Style="{StaticResource Text}" Grid.Column="1" Grid.Row="0" Name="cbType"></ComboBox>
+        <TextBlock Style="{StaticResource Text}" Grid.Column="0" Grid.Row="1" Text="Breed"></TextBlock>
+        <TextBox Style="{StaticResource Text}" Grid.Column="1" Grid.Row="1" Name="tbBreed"></TextBox>
+        <TextBlock Style="{StaticResource Text}" Grid.Column="0" Grid.Row="2" Text="Name"></TextBlock>
+        <TextBox Style="{StaticResource Text}" Grid.Column="1" Grid.Row="2" Name="tbName"></TextBox>
+        <TextBlock Style="{StaticResource Text}" Grid.Column="0" Grid.Row="3" Text="Area Live"></TextBlock>
+        <TextBox Style="{StaticResource Text}" Grid.Column="1" Grid.Row="3" Name="tbAreaLive"></TextBox>
+        <TextBlock Style="{StaticResource Text}" Grid.Column="0" Grid.Row="4" Text="Description"></TextBlock>
+        <TextBox Style="{StaticResource Text}" Grid.Column="1" Grid.Row="4" Name="tbDescription"></TextBox>
+        <TextBlock Style="{StaticResource Text}" Grid.Column="0" Grid.Row="5" Text="Wings Color"></TextBlock>
+        <TextBox Style="{StaticResource Text}" Grid.Column="1" Grid.Row="5" Name="tbWingsColor"></TextBox>
+        <TextBlock Style="{StaticResource Text}" Grid.Column="0" Grid.Row="6" Text="Tail Long"></TextBlock>
+        <TextBox Style="{StaticResource Text}" Grid.Column="1" Grid.Row="6" Name="tbTailLong"></TextBox>
+        <StackPanel Grid.Column="1" Grid.Row="7" Orientation="Horizontal">
+            <Button Style="{StaticResource Button}" Content="Save" Click="BtnClickSave"></Button>
+            <Button Style="{StaticResource Button}" Content="Cancel" Click="BtnClickCancel"></Button>
+        </StackPanel>
+
+
+    </Grid>
+</Window>
