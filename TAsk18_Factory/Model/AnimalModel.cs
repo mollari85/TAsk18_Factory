@@ -39,15 +39,15 @@ namespace TAsk18_Factory.Model
         {
             AnimalFactoryManager.GetAnimalFactory(animal.Type).CreateAnimal(animal.Breed, animal.Name, animal.Description, animal.AreaLive);
         }
-        public void Save()
+        public void Save(string path)
         {
             ISaveOpen SaveData = new SaveOpenToXML();
-            SaveData.Save(Animals);
+            SaveData.Save(Animals,path);
         }
-        public void Open()
+        public void Open(string path)
         {
             ISaveOpen GetData = new SaveOpenToXML();
-            Animals=GetData.Open().ToList();
+            Animals=GetData.Open(path).ToList();
         }
         public void Remove(IGeneralAnimal animal)
         {

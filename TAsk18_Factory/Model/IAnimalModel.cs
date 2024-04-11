@@ -11,8 +11,8 @@ namespace TAsk18_Factory.Model
     {
         public List<IGeneralAnimal> Animals { get; set; }
         
-        public void Save();
-        public void Open();
+        public void Save(string path);
+        public void Open(string path);
         public void Add(IGeneralAnimal animal);
         public void Change(IGeneralAnimal animal);
         public void Remove(IGeneralAnimal animal);

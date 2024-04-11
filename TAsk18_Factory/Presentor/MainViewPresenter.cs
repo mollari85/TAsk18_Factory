@@ -1,4 +1,5 @@
 ﻿using AnimalType;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using TAsk18_Factory.Model;
 using TAsk18_Factory.View;
+using System.IO;
 
 namespace TAsk18_Factory.Presentor
 {
@@ -17,15 +19,51 @@ namespace TAsk18_Factory.Presentor
         private IMainView _View { get; set; }
         // public ObservableCollection<string> TypeAnymal { get; set; } 
         IGeneralAnimal CurrentAnimal;
+        ISaveOpen SaveOpen;
 
         public void CommandSave()
         {
-            _Model.Save();
+            SaveFileDialog SaveDialog = new SaveFileDialog();
+            SaveDialog.Filter = "XML files(*.xml)|*.xml|JSON files (*.json)|*.json|All files(*.*)|*.*";
+            if (SaveDialog.ShowDialog()==false)
+                return;
+            FileInfo file = new FileInfo(SaveDialog.FileName);
+            MessageBox.Show(file.Extension);
+            switch (file.Extension)
+            {
+                case ".json":
+                    SaveOpen=new SaveOpenToJson();
+ 
+                    break;
+                case ".xml":
+                     
+                    SaveOpen = new SaveOpenToXML();
+                    break;
+                default:
+                    return;
+
+            }
+            _Model.Save(file.FullName);
             MessageBox.Show("Saving compleated");
+
         }
         public void CommandLoad()
         {
-            _Model.Open();
+            OpenFileDialog OpenDialog = new OpenFileDialog();
+            OpenDialog.Filter = "XML files(*.xml)|*.xml|JSON(*.json)|*.json*|All files(*.*)|*.*";
+            if (OpenDialog.ShowDialog() == false)
+                return;
+            FileInfo File = new FileInfo(OpenDialog.FileName);
+            switch (File.Extension)
+            {
+                case "json":
+                    SaveOpen= new SaveOpenToJson();
+                    break;
+                case "xml":
+                    SaveOpen = new SaveOpenToXML();
+                    break;
+            }
+            _Model.Open(File.FullName);
             _View.UpdateView();
             MessageBox.Show("Loading compleated");
         }

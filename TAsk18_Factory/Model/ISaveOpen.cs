@@ -9,7 +9,7 @@ namespace TAsk18_Factory.Model
 {
     internal interface ISaveOpen
     {
-        public void Save(IEnumerable<IGeneralAnimal> tmp);
-        public IEnumerable<IGeneralAnimal> Open();
+        public void Save(IEnumerable<IGeneralAnimal> tmp, string s);
+        public IEnumerable<IGeneralAnimal> Open(string s);
     }
 }
